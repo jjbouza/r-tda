@@ -14,8 +14,7 @@
 #include <tdautils/phatUtils.h>
 
 // for Rips
-#include <tdautils/ripsL2.h>
-#include <tdautils/ripsArbit.h>
+#include <tdautils/ripsUtils.h>
 
 
 
@@ -122,7 +121,7 @@ inline void ripsDiag(
 
   //Ripser
   if(libraryDiag[0] == 'R'){
-    return 0;
+    ripser_interface(X, nSample, nDim, maxdimension, maxscale, persDgm);
   }
   else if (libraryFiltration[0] == 'G') {
     Gudhi::Simplex_tree<> smplxTree =
