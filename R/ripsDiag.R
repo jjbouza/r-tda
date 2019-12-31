@@ -24,8 +24,15 @@ function(X, maxdimension, maxscale, dist = "euclidean", library = "GUDHI",
   if (library[1] == "dionysus" || library[1] == "DIONYSUS") {
     library[1] <- "Dionysus"
   }
-  if (library[1] != "GUDHI" && library[1] != "Dionysus") {
-    stop("library for building a filtration should be a string: either 'GUDHI' or 'Dionysus'")
+   if (library[1] == "ripser" || library[1] == "RIPSER"){
+      library[1] <- "Ripser"
+  }
+  if (library[1] != "GUDHI" && library[1] != "Dionysus" && library[1] != "Ripser") {
+    stop("library for building a filtration should be a string: either 'GUDHI', 'Dionysus', or 'Ripser.")
+  }
+  if((library[1] == "Ripser" && library[2] != "Ripser") || (library[2] == "Ripser" && library[1] != "Ripser")){ 
+    #Ripser does not split up the filtration generation from the diagram compuation.
+    stop("When using Ripser, the library for building the filtration and the library for computing the persistence diagram must both be set to 'Ripser'.")
   }
   if (library[2] == "gudhi" || library[2] == "Gudhi") {
     library[2] <- "GUDHI"
@@ -36,8 +43,11 @@ function(X, maxdimension, maxscale, dist = "euclidean", library = "GUDHI",
   if (library[2] == "phat" || library[2] == "Phat") {
     library[2] <- "PHAT"
   }
+   if (library[2] == "ripser" || library[2] == "RIPSER"){
+      library[2] <- "Ripser"
+  }
   if (library[2] != "GUDHI" && library[2] != "Dionysus" && library[2] != "PHAT") {
-    stop("library for computing persistence diagram should be a string: either 'GUDHI', 'Dionysus', or 'PHAT'")
+    stop("library for computing persistence diagram should be a string: either 'GUDHI', 'Dionysus', 'PHAT', or 'Ripser'.")
   }
   if (!is.logical(location)) {
     stop("location should be logical")

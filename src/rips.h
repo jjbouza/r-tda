@@ -120,7 +120,11 @@ inline void ripsDiag(
     std::vector< std::vector< std::vector< std::vector< unsigned > > > > & persCycle
 ) {
 
-  if (libraryFiltration[0] == 'G') {
+  //Ripser
+  if(libraryDiag[0] == 'R'){
+    return 0;
+  }
+  else if (libraryFiltration[0] == 'G') {
     Gudhi::Simplex_tree<> smplxTree =
         RipsFiltrationGudhi< Gudhi::Simplex_tree<> >(X, nSample, nDim,
             maxdimension, maxscale, printProgress, print);
