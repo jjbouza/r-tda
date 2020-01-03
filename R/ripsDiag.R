@@ -15,9 +15,6 @@ function(X, maxdimension, maxscale, dist = "euclidean", library = "GUDHI",
   if (dist != "euclidean" && dist != "arbitrary") {
     stop ("dist should be either 'euclidean' or 'arbitrary'")
   }
-  if (length(library) == 1) {
-    library <- rep(library, 2)
-  }
   if (library[1] == "gudhi" || library[1] == "Gudhi") {
     library[1] <- "GUDHI"
   }
@@ -26,6 +23,9 @@ function(X, maxdimension, maxscale, dist = "euclidean", library = "GUDHI",
   }
    if (library[1] == "ripser" || library[1] == "RIPSER"){
       library[1] <- "Ripser"
+  }
+  if (length(library) == 1) {
+    library <- rep(library, 2)
   }
   if (library[1] != "GUDHI" && library[1] != "Dionysus" && library[1] != "Ripser") {
     stop("library for building a filtration should be a string: either 'GUDHI', 'Dionysus', or 'Ripser.")
@@ -46,7 +46,7 @@ function(X, maxdimension, maxscale, dist = "euclidean", library = "GUDHI",
    if (library[2] == "ripser" || library[2] == "RIPSER"){
       library[2] <- "Ripser"
   }
-  if (library[2] != "GUDHI" && library[2] != "Dionysus" && library[2] != "PHAT") {
+  if (library[2] != "GUDHI" && library[2] != "Dionysus" && library[2] != "PHAT" && library[2] != "Ripser") {
     stop("library for computing persistence diagram should be a string: either 'GUDHI', 'Dionysus', 'PHAT', or 'Ripser'.")
   }
   if (!is.logical(location)) {

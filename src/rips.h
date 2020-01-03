@@ -121,7 +121,10 @@ inline void ripsDiag(
 
   //Ripser
   if(libraryDiag[0] == 'R'){
-    ripser_interface(X, nSample, nDim, maxdimension, maxscale, persDgm);
+    if(dist[0] == 'a')
+      DiagRipser(X, nSample, nDim, maxdimension, maxscale, true, persDgm);
+    else if(dist[0] == 'e')
+      DiagRipser(X, nSample, nDim, maxdimension, maxscale, false, persDgm);
   }
   else if (libraryFiltration[0] == 'G') {
     Gudhi::Simplex_tree<> smplxTree =
