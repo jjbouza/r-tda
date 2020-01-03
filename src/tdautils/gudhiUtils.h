@@ -2,7 +2,7 @@
 #define __GUDHIUTILS_H__
 
 // #include <R.h>
-// #include <R_ext/Print.h>
+ #include <R_ext/Print.h>
 
 #include <gudhi/reader_utils.h>
 #include <gudhi/graph_simplicial_complex.h>

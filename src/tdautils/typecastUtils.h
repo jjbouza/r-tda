@@ -319,7 +319,21 @@ void filtrationGudhiOne(
   }
 }
 
+std::vector< std::vector< std::vector<double> > > RipserToStl(
+  std::vector< std::vector<double> >& ripserOut) {
 
+  std::vector< std::vector< std::vector<double> > > persDgm;
+
+  for(int dim = 0; dim < ripserOut.size(); dim++){
+      std::vector< std::vector< double > > dim_v(ripserOut[dim].size()/2);
+      for(int pair = 0; pair < ripserOut[dim].size(); pair+=2){
+          dim_v[pair/2] = {ripserOut[dim][pair], ripserOut[dim][pair+1]};
+      }
+      persDgm.push_back(dim_v);
+  }
+
+  return persDgm;
+}
 
 // TODO : see whether 'const SimplexTree &' is possible
 template< typename IntegerVector, typename SimplexTree, typename VectorList,

@@ -16,6 +16,9 @@
 // for Rips
 #include <tdautils/ripsUtils.h>
 
+#include  <tdautils/ripsL2.h>
+#include  <tdautils/ripsArbit.h>
+
 
 
 // ripsFiltration
@@ -122,9 +125,9 @@ inline void ripsDiag(
   //Ripser
   if(libraryDiag[0] == 'R'){
     if(dist[0] == 'a')
-      DiagRipser(X, nSample, nDim, maxdimension, maxscale, true, persDgm);
+      DiagRipser(X, nSample, nDim, maxdimension, maxscale, true, printProgress, print, persDgm);
     else if(dist[0] == 'e')
-      DiagRipser(X, nSample, nDim, maxdimension, maxscale, false, persDgm);
+      DiagRipser(X, nSample, nDim, maxdimension, maxscale, false, printProgress, print, persDgm);
   }
   else if (libraryFiltration[0] == 'G') {
     Gudhi::Simplex_tree<> smplxTree =

@@ -60,7 +60,7 @@ derivative works thereof, in binary and source code form.
 
 
 template <class Key, class T> class hash_map : public std::unordered_map<Key, T> {};
-typedef float value_t;
+typedef double value_t;
 typedef int64_t index_t;
 typedef int16_t coefficient_t;
 
@@ -1008,7 +1008,7 @@ void ripser<sparse_distance_matrix>::assemble_columns_to_reduce(
 				greater_diameter_or_smaller_index<diameter_index_t>());
 }
 
-ripserResults rips_dm(float* D, int N, int modulus, int dim_max, float threshold, int do_cocycles) {
+ripserResults rips_dm(double* D, int N, int modulus, int dim_max, float threshold, int do_cocycles) {
 	//Setup distance matrix and figure out threshold
 	std::vector<value_t> distances(D, D+N);
 	compressed_lower_distance_matrix dist =
