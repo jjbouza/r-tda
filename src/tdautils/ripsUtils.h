@@ -45,18 +45,18 @@ inline void DiagRipser(
         double* X_raw = &distance_mat[0][0];
         ripserResults res = rips_dm(X_raw, nSamples, 2, maxdimension, maxscale, 0);
 
-        //count persistance pairs
 
 
         std::vector< std::vector< std::vector<double> > > res_processed = RipserToStl(res.births_and_deaths_by_dim);
 
-        unsigned persistence_pairs = 0;
-        for(int dim = 0; dim < res_processed.size(); dim++)
-            for(int j = 0; j < res_processed[dim].size(); j++)
-                persistence_pairs ++;
-
-        if(printProgress)
+        //count persistance pairs
+        if(printProgress){
+            unsigned persistence_pairs = 0;
+            for(int dim = 0; dim < res_processed.size(); dim++)
+                for(int j = 0; j < res_processed[dim].size(); j++)
+                    persistence_pairs ++;
             print("# Generated %d persistance pairs. \n", persistence_pairs);
+        }
 
         persDgm = res_processed;
 }
